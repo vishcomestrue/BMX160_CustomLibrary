@@ -2,7 +2,7 @@
   @file bmx160lib.py
   @license     The MIT License (MIT)
   @author [Vishwanath R] (github: vishcomestrue)
-  @version  v1.0.0
+  @version  v1.1.0
   @date  2023-07-19
   @url 
  '''
@@ -154,7 +154,7 @@ class BMX160:
 		else:
 			self.gyroRange = self._accel_2g_mode
 
-	def get_all_data(self):
+	def get_all_data(self, axis='none'):
 		data = self.read_from_bmx(self._mag_data_addr)
 
 		if(data[1] & 0x80):
@@ -216,16 +216,32 @@ class BMX160:
 
 		sensor_datas = []
 
-		sensor_datas.append(magnx)
-		sensor_datas.append(magny)
-		sensor_datas.append(magnz)
+		if axis == 'x':
+			sensor_datas.append(magnx)
+			sensor_datas.append(gyrox)
+			sensor_datas.append(accelx)
 
-		sensor_datas.append(gyrox)
-		sensor_datas.append(gyroy)
-		sensor_datas.append(gyroz)
+		elif axis == 'y':
+			sensor_datas.append(magny)
+			sensor_datas.append(gyroy)
+			sensor_datas.append(accely)
 
-		sensor_datas.append(accelx)
-		sensor_datas.append(accely)
-		sensor_datas.append(accelz)
+		elif axis == 'z':
+			sensor_datas.append(magnz)
+			sensor_datas.append(gyroz)
+			sensor_datas.append(accelz)
+
+		else:
+			sensor_datas.append(magnx)
+			sensor_datas.append(magny)
+			sensor_datas.append(magnz)
+
+			sensor_datas.append(gyrox)
+			sensor_datas.append(gyroy)
+			sensor_datas.append(gyroz)
+
+			sensor_datas.append(accelx)
+			sensor_datas.append(accely)
+			sensor_datas.append(accelz)
 
 		return sensor_datas
