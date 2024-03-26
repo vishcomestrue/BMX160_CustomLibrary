@@ -1,8 +1,8 @@
 '''!
   @file bmx160lib.py
   @license     The MIT License (MIT)
-  @author [Vishwanath R] (github: vishcomestrue)
-  @version  v1.1.0
+  @author [Vishwanath R] (email: rvishwanath03@outlook.com) (github: vishcomestrue)
+  @version  v1.1.1
   @date  2023-07-19
   @url 
  '''
